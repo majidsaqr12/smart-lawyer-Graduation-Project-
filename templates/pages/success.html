@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}Thank You for Registering - HB Development{% endblock %}
+{% load static %}
+{% block seo %}
+<meta name="description" content="You have successfully registered at HB Development. We will review your submission and contact you shortly with more information about the next steps.">
+<meta name="keywords" content="Successful Registration, HB Development, Registration Confirmation, Technology Services, IT Solutions">
+<meta property="og:title" content="Thank You for Registering at HB Development!">
+<meta property="og:description" content="You have successfully registered at HB Development. We will review your submission and contact you shortly with more information about the next steps.">
+<meta property="og:image" content="{% static 'images/logo1.jpg' %}">
+<meta property="og:type" content="website">
+{% endblock %}
+
+{% block hero_section %}
+{% endblock %}
+
+{% block content %}
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.0/ionicons.min.css" rel="stylesheet">
+
+<style>
+    .thank-you-message {
+        text-align: center;
+        padding: 50px 15px;
+        border-radius: 15px;
+        max-width: 700px;
+        margin: 50px auto;
+        background: #1e1e1e;
+        color: #f5f5f5;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .thank-you-message i {
+        font-size: 100px;
+        color: #e91e63;
+        margin-bottom: 20px;
+    }
+
+    .thank-you-message h1 {
+        font-size: 2.5em;
+        margin-top: 20px;
+        font-weight: bold;
+        color: #e91e63;
+    }
+
+    .thank-you-message p {
+        font-size: 1.2em;
+        color: #c0c0c0;
+        margin-top: 10px;
+        line-height: 1.5;
+    }
+
+    .btn-primary-1 {
+        background: rgba(255, 255, 255, 0.2);
+        border: 1px solid #FFFFFF;
+        border-radius: 4px;
+        color:#fff;
+    }
+    
+</style>
+
+<div class="thank-you-message">
+    <i class="ion-checkmark-circle"></i>
+    <h1>Thank You for Registering!</h1>
+    <div class="mt-5">
+        <a href="{% url 'home' %}" class="btn btn-primary-1">Back to Home</a>
+    </div>
+</div>
+{% endblock %}

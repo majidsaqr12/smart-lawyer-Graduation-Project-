@@ -1,0 +1,207 @@
+{% load i18n %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% trans "Accueil - EDUAI" %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block css %}
+    {% endblock %}
+    {% block seo %}
+    <meta name="description" content="{% trans "Smart Lawyer offre une assistance juridique alimentée par l'IA, dédiée aux avocats égyptiens pour améliorer l'efficacité et les résultats des cas juridiques." %}">
+    <meta name="keywords" content="{% trans "Smart Lawyer, assistance juridique, intelligence artificielle, avocats égyptiens, plateforme juridique, analyse des cas, solutions légales innovantes" %}">
+    <meta property="og:title" content="{% trans "Smart Lawyer - Assistance juridique intelligente pour avocats égyptiens" %}">
+    <meta property="og:description" content="{% trans "Smart Lawyer offre une assistance juridique alimentée par l'IA, dédiée aux avocats égyptiens pour améliorer l'efficacité et les résultats des cas juridiques." %}">
+    <meta property="og:image" content="{% static 'images/smart-lawyer-logo.png' %}">
+    <meta property="og:type" content="{% trans "website" %}">
+    {% endblock %}
+
+    <link rel="icon" href="{% static 'images/logo.png' %}" type="image/svg+xml">
+    <style>
+        /* Language Switcher Styles */
+        .lang-switcher {
+            border-radius: 50px;
+            background: linear-gradient(45deg, #5a99d4, #82c3e6);
+            color: white;
+            padding: 10px 30px;
+            border: none;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+            margin-left:20px;
+        }
+
+        .lang-switcher:hover {
+            background: linear-gradient(45deg, #82c3e6, #5a99d4);
+        }
+
+        .dropdown-menu {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            font-size: 15px;
+            font-weight: 500;
+            color: #2A3E52;
+        }
+
+        .dropdown-item i {
+            margin-right: 10px;
+        }
+
+        .dropdown-item:hover {
+            background-color: #e0e0e0;
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Section En-tête -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm scroll-left">
+        <div class="container">
+<!--            <a class="navbar-brand" href="{% url 'home' %}">-->
+<!--                <img src="{% static 'images/logo.png' %}" alt="{% trans "SMARTLAWYER" %}" width="130">-->
+<!--            </a>-->
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <span style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 28px; color: #2A3E52; letter-spacing: 1px; text-transform: uppercase;">
+                    SMART
+                </span>
+                <span style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 28px; color: gold; letter-spacing: 1px; text-transform: uppercase;">
+                    LAWYER
+                </span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="{% trans "Basculer la navigation" %}">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'home' %}">{% trans "Home" %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">{% trans "About" %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">{% trans "Features" %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">{% trans "Contact" %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">{% trans "Blogs" %}</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                        <li class="nav-item d-flex align-items-center">
+                            <a href="{% url 'profile' %}" class="nav-link d-flex align-items-center">
+                                <span class="icon-circle">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                                <span class="ms-2">{{ user.username }}</span>
+                            </a>
+                        </li>
+                        <form method="POST" action="{% url 'logout' %}" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-dark ms-3">{% trans "Déconnexion" %}</button>
+                        </form>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="btn btn-dark ms-3" href="{% url 'login' %}">{% trans "Connexion" %}</a>
+                        </li>
+                    {% endif %}
+                    <!-- Sélecteur de langue -->
+                    <li class="nav-item ml-3">
+                        <form action="{% url 'set_language' %}" method="post">
+                            {% csrf_token %}
+                            <input name="next" type="hidden" value="{{ request.path }}">
+                            <div class="dropdown">
+                                <button class="btn dropdown-toggle lang-switcher" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    {% get_current_language as LANGUAGE_CODE %}
+                                    {% if LANGUAGE_CODE == 'fr' %}
+                                        <i class="flag-icon flag-icon-fr"></i>
+                                    {% elif LANGUAGE_CODE == 'ar' %}
+                                        <i class="flag-icon flag-icon-ma"></i> <!-- Drapeau marocain pour l'arabe -->
+                                    {% else %}
+                                        <i class="flag-icon flag-icon-gb"></i>
+                                    {% endif %}
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                                    <li><button class="dropdown-item" type="submit" name="language" value="en">
+                                        <i class="flag-icon flag-icon-gb"></i> English
+                                    </button></li>
+                                    <li><button class="dropdown-item" type="submit" name="language" value="fr">
+                                        <i class="flag-icon flag-icon-fr"></i> Frensh
+                                    </button></li>
+                                    <li><button class="dropdown-item" type="submit" name="language" value="ar">
+                                        <i class="flag-icon flag-icon-ma"></i> Arabic
+                                    </button></li>
+                                </ul>
+                            </div>
+                        </form>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    {% block hero_section %}
+        <!-- Section héros -->
+        <div class="container mt-5 scroll-right">
+            <div class="row align-items-start">
+                <div class="col-lg-6 col-md-12">
+                    <h1 class="display-4 fw-bold">{% trans "AI-powered legal assistance for Egyptian lawyers" %}</h1>
+                    <p class="lead text-muted">{% trans "Discover the first AI-powered personalized legal platform tailored for your professional needs." %}</p>
+
+                    {% if not user.is_authenticated %}
+                        <a href="{% url 'register' %}" class="btn btn-dark btn-lg">{% trans "Inscription" %}</a>
+                    {% endif %}
+                </div>
+                <div class="col-lg-6 col-md-12 text-center mt-4 mt-lg-0">
+                    <img src="{% static 'images/hero.jpg' %}" alt="{% trans "Image Héros" %}" class="img-fluid hero-img modern-img">
+                </div>
+            </div>
+        </div>
+
+    {% endblock %}
+
+
+    <!-- Contenu principal -->
+    <main role="main" class="container" style="font-family: 'poppins', sans-serif;">
+        {% block content %}
+
+        {% endblock %}
+    </main>
+
+    <!-- Section pied de page -->
+    <footer class="bg-dark text-white py-4 scroll-left">
+        <div class="container d-flex justify-content-between align-items-center">
+            <p class="mb-0">&copy; 2024 <strong>{% trans "Edu AI" %}</strong>. {% trans "Tous droits réservés." %}</p>
+            <div class="social-icons">
+                <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS et FontAwesome -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    {% load static %}
+    <script src="{% static 'js/base.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,436 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container legal-assistance-section text-center">
+        <h1>{% trans "Comprehensive" %} <span class="highlight">{% trans "AI-powered" %}</span><br> {% trans "Legal Assistance Platform" %}</h1>
+        <div class="row align-items-center mt-5">
+            <!-- Image Section -->
+            <div class="col-lg-5 col-md-12 mb-4 mb-lg-0">
+                <img src="{% static 'images/smart-lawyer-platform.jpg' %}" alt="{% trans "Legal Assistance Illustration" %}" class="img-fluid">
+            </div>
+            <!-- Text Section -->
+            <div class="col-lg-7 col-md-12 d-flex justify-content-center align-items-center text-center">
+                <div>
+                    <h3 class="pb-3">{% trans "THE LEGAL REVOLUTION!" %}</h3>
+                    <ul class="features-list">
+                        <li><span class="icon">1</span> {% trans "Provides tailored case analysis" %}</li>
+                        <li><span class="icon">2</span> {% trans "Offers legal strategies and suggestions" %}</li>
+                        <li><span class="icon">3</span> {% trans "Adapts insights based on case history" %}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container learning-section text-center">
+        <div class="row align-items-center mt-3">
+            <!-- Text Section -->
+            <div class="col-lg-7 col-md-12 d-flex justify-content-start align-items-center text-start">
+                <div>
+                    <h3 class="pb-3">{% trans "Smart Lawyer Platform" %}</h3>
+                    <ul class="features-list">
+                        <li><span class="icon">1</span> {% trans "Available 24/7 for your legal inquiries" %}</li>
+                        <li><span class="icon">2</span> {% trans "Provides real-time alerts on potential case issues and simpler solutions" %}</li>
+                        <li><span class="icon">3</span> {% trans "Offers targeted legal advice and feedback on your case strategies" %}</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Image Section -->
+            <div class="col-lg-5 col-md-12 mb-4 mb-lg-0">
+                <img src="{% static 'images/smart-lawyer-container.jpg' %}" alt="{% trans "Legal Assistance Illustration" %}" class="img-fluid">
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container learning-section text-center">
+        <div class="row align-items-center mt-3">
+            <!-- Image Section -->
+            <div class="col-lg-5 col-md-12 mb-4 mb-lg-0">
+                <img src="{% static 'images/smart-lawyer-container2.jpg' %}" alt="{% trans "Legal Assistance Illustration" %}" class="img-fluid">
+            </div>
+            <!-- Text Section -->
+            <div class="col-lg-7 col-md-12 d-flex justify-content-center align-items-center text-left">
+                <div>
+                    <h3 class="pb-3" style="text-align:left !important;">{% trans "All-in-One Legal Platform" %}</h3>
+                    <ul class="features-list">
+                        <li><span class="icon">1</span> {% trans "Legal Resources Library" %}</li>
+                        <li><span class="icon">2</span> {% trans "Compliance with national legal standards" %}</li>
+                        <li><span class="icon">3</span> {% trans "Diverse tools and adaptable features" %}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container learning-section text-center">
+        <div class="row align-items-center mt-3">
+            <!-- Text Section -->
+            <div class="col-lg-7 col-md-12 d-flex justify-content-start align-items-center text-start">
+                <div>
+                    <h3 class="pb-3">{% trans "Progress Tracking" %}</h3>
+                    <ul class="features-list">
+                        <li><span class="icon">1</span> {% trans "Track progress in the legal processes and cases" %}</li>
+                        <li><span class="icon">2</span> {% trans "Analyze by case type and relevant legal principles" %}</li>
+                        <li><span class="icon">3</span> {% trans "Accessible to lawyers, clients, and legal assistants" %}</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Image Section -->
+            <div class="col-lg-5 col-md-12 mb-4 mb-lg-0">
+                <img src="{% static 'images/smart-lawyer-progress.jpg' %}" alt="{% trans "Progress Tracking Illustration" %}" class="img-fluid">
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-section py-5">
+    <div id="container">
+        <div class="row justify-content-center">
+            <!-- First Card -->
+            <div class="col-md-4">
+                <div id="card1" class="card p-4 shadow-sm h-100">
+                    <h4 id="title1" class="card-title">
+                        <img src="{% static 'images/icons/empowerment.png' %}" alt="{% trans "Empowerment Icon" %}" id="icon1" class="icon"> {% trans "Empowerment" %}
+                    </h4>
+                    <p id="text1" class="card-text">
+                        {% trans "Gaining self-confidence and improving decision-making, with success depending on personal investment. Empowerment also enhances digital literacy and develops skills in the digital world." %}
+                    </p>
+                    <h4 id="title2" class="card-title">
+                        <img src="{% static 'images/icons/flexibility.png' %}" alt="{% trans "Flexibility Icon" %}" id="icon2" class="icon"> {% trans "Flexibility" %}
+                    </h4>
+                    <p id="text2" class="card-text">
+                        {% trans "Availability 24/7, giving you the freedom to work at your own pace. This approach helps save time and money while increasing productivity, making it easier to balance tasks efficiently." %}
+                    </p>
+                </div>
+            </div>
+
+            <!-- Second Card -->
+            <div class="col-md-8 mt-phone">
+                <div id="card2" class="card p-4 shadow-sm h-100">
+                    <h4 id="title3" class="card-title">
+                        <img src="{% static 'images/icons/inclusivity.png' %}" alt="{% trans "Inclusivity Icon" %}" id="icon3" class="icon"> {% trans "Inclusivity" %}
+                    </h4>
+                    <p id="text3" class="card-text">
+                        {% trans "Adaptability to all learning styles, providing a flexible and personalized approach to education. With virtual expert support always available, you have the freedom to be yourself while learning in a way that suits you best." %}
+                    </p>
+                    <h4 id="title4" class="card-title">
+                        <img src="{% static 'images/icons/equal_opportunity.png' %}" alt="{% trans "Equal Opportunity Icon" %}" id="icon4" class="icon"> {% trans "Equal Opportunity" %}
+                    </h4>
+                    <p id="text4" class="card-text">
+                        {% trans "Access to quality program content is equal for everyone. Each person finds the learning method that suits them best, with fair rules ensuring everyone has equitable access to high-quality content." %}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    {% comment %} Section 4 {% endcomment %}
+
+    <div class="container edu-ai-section py-5">
+    <div class="text-center">
+        <h2 style="font-style: normal; font-weight: 600; font-size: 52px; line-height: 72px; color:#000;">{% trans "Edu AI Approach" %}</h2>
+        <p style="font-style: normal; font-weight: 500; font-size: 20px; line-height: 25px;">
+            {% trans "Combines adaptive learning (controlled by the platform) and self-directed learning (controlled by the student). Students can speed up, slow down, or navigate differently with our algorithms, which enhance mastery of one concept or skill at a time." %}
+        </p>
+    </div>
+
+    <!-- First row, with 2 cards in the first column and 1 card in the second column -->
+    <div class="row my-5">
+        <div class="col-md-8">
+            <div class="row">
+                <!-- Comprehensive Review -->
+                <div class="col-md-6">
+                    <div class="card h-100 shadow text-left mt-3 mt-md-0" style="background-color: #233876; color:white;">
+                        <div class="card-body">
+                            <h4 class="card-title" style="color:white;">{% trans "Comprehensive Review" %}</h4>
+                            <ul class="list-unstyled" style="color:white;">
+                                <li>{% trans "Detailed lessons divided into major topics" %}</li>
+                                <li>{% trans "Adaptive quizzes by chapter and subchapter" %}</li>
+                                <li>{% trans "Immediate support and advice" %}</li>
+                            </ul>
+                            <!-- Image Under Text -->
+                            <img src="{% static 'images/comprehensive-review.jpg' %}" alt="{% trans "Comprehensive Review" %}" class="img-fluid mt-3">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review Assistance -->
+                <div class="col-md-6">
+                    <div class="card h-100 shadow text-left position-relative mt-5 mt-md-0" style="background-color:#D0E5FE;">
+                        <div class="card-body">
+                            <h4 class="card-title" style="color:#233876;">{% trans "Review Assistance" %}</h4>
+                            <ul class="list-unstyled" style="color:#233876;">
+                                <li>{% trans "Complete review topics" %}</li>
+                                <li>{% trans "Optional hints" %}</li>
+                                <li>{% trans "Guidance and support at your fingertips" %}</li>
+                            </ul>
+                            <!-- Image positioned bottom-right using an ID -->
+                            <img id="bottom-right-image" src="{% static 'images/review-assistance.jpg' %}" alt="{% trans "Review Assistance" %}" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Second row, single full-width card for In-Class Exercises -->
+                <div class="row mt-5 mt-md-0">
+                    <div class="col-md-12">
+                        <div class="card h-100 shadow text-left mt-3" style="background-color:#233876; color:white; position: relative;">
+                            <div class="card-body">
+                                <h4 class="card-title">{% trans "In-Class Exercises" %}</h4>
+                                <ul class="list-unstyled">
+                                    <li>{% trans "Exercises with Closed Book" %}</li>
+                                    <li>{% trans "Clarity on topics and relative difficulty levels" %}</li>
+                                    <li>{% trans "Guidance and support at hand" %}</li>
+                                </ul>
+                                <!-- Add the image to the right -->
+                                <img src="{% static 'images/in-class-exercises.jpg' %}" alt="{% trans "In-Class Exercises" %}" class="img-fluid" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); width: 150px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Open Book Exercises -->
+        <div class="col-md-4 mt-5 mt-md-0">
+            <div class="card h-100 shadow text-left mt-3 mt-md-0" style="background-color:#D0E5FE;">
+                <div class="card-body">
+                    <h4 class="card-title" style="color:#233876;">{% trans "Open Book Exercises" %}</h4>
+                    <ul class="list-unstyled" style="color:#233876;">
+                        <li>{% trans "Exercises with Open Book Access" %}</li>
+                        <li>{% trans "Optional guidelines or defined methodologies" %}</li>
+                        <li>{% trans "Immediate guidance, corrections, and recommendations" %}</li>
+                    </ul>
+                    <!-- Image positioned under text -->
+                    <img id="open-book-image" src="{% static 'images/open-book-exercises.jpg' %}" alt="{% trans "Open Book Exercises" %}" class="img-fluid mt-3">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+    {% comment %} Setion 5 {% endcomment %}
+
+    <section id="personalize-learning">
+    <div class="container text-center">
+        <h2 id="main-heading">{% trans "Personalize Your Learning" %} <br> {% trans "with MAiProf" %}</h2>
+        <p id="sub-heading">{% trans "Detailed explanations of difficult lesson parts" %}</p>
+    </div>
+
+    <div class="container" id="team-info">
+        <div class="row">
+            <div class="col-md-6" id="team-title">
+                <h3 id="team-heading">{% trans "Our team: at the forefront of innovation and academic excellence" %}</h3>
+            </div>
+            <div class="col-md-6" id="team-description-container">
+                <p id="team-description">
+                    {% trans "Developed by a Tunisian team of talents, graduates of MIT, and gold and silver medalists in the International Olympiads in Mathematics and Informatics. Based on an academically recognized research project, it offers comprehensive content aligned with the national curriculum, developed and assessed by experienced teachers and educators." %}
+                </p>
+            </div>
+        </div>
+        <div class="row" id="stats">
+            <div class="col-md-3 col-sm-6 col-12">
+                <h4>+1,400</h4>
+                <p>{% trans "Supports detailed courses" %}</p>
+            </div>
+            <div class="col-md-3 col-sm-6 col-12">
+                <h4>+3,500</h4>
+                <p>{% trans "MCQ per section" %}</p>
+            </div>
+            <div class="col-md-3 col-sm-6 col-12">
+                <h4>+1,500</h4>
+                <p>{% trans "Exercises per section" %}</p>
+            </div>
+            <div class="col-md-3 col-sm-6 col-12">
+                <h4>+1,500</h4>
+                <p>{% trans "Review exercises (per chapter, trimester, and full academic year)" %}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    {{% comment %} Offers section {% endcomment %}
+<div id="offers-section" class="container text-center my-5">
+    <h2 id="offers-title">{% trans "Our Offers" %}</h2>
+    <p id="offers-description">{% trans "Exceptional prices for the launch in Morocco!" %}</p>
+    <div id="offers-cards" class="row justify-content-center">
+        {% for offer in offers %}
+        <div id="offer-{{ offer.id }}" class="col-lg-4 col-md-6 col-sm-12 mb-4 mt-5">
+            <div id="offer-card-{{ offer.id }}" class="card p-3 h-100">
+                <div class="card-body d-flex flex-column align-items-start">
+                    <div id="offer-icon-{{ offer.id }}" class="offer-icon mb-3">
+                        <img src="{% static 'images/icons/offer_icon.png' %}" alt="{% trans "Offer Icon" %}" id="offer-icon-img-{{ offer.id }}">
+                    </div>
+                    <h5 id="offer-title-{{ offer.id }}">{{ offer.category }}</h5>
+                    <p id="offer-monthly-price-{{ offer.id }}">
+                        <strong>{{ offer.monthly_price }} {{ offer.currency }}</strong> {% trans "Monthly" %}
+                    </p>
+                    <p id="offer-quarterly-price-{{ offer.id }}">
+                        <strong>{{ offer.quarterly_price }} {{ offer.currency }}</strong> {% trans "Quarterly" %}
+                    </p>
+                    <p id="offer-annually-price-{{ offer.id }}">
+                        <strong>{{ offer.annually_price }} {{ offer.currency }}</strong> {% trans "Annually" %}
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+    
+    {% comment %} Testimonial {% endcomment %}
+    <div class="container-fluid bg-light py-5 mb-5 p-5" style="background-color: #EEF0FF !important; border-radius:15px !important;">
+        <h2 class="text-center mb-4">Student Testimonials</h2>
+        <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            {% for testimonial in testimonials %}
+              {% if forloop.counter0|divisibleby:3 %}
+                <div class="carousel-item {% if forloop.first %} active {% endif %}">
+                  <div class="row justify-content-center">
+              {% endif %}
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                  <video controls class="img-fluid w-100">
+                    <source src="{{ testimonial.video.url }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              {% if forloop.counter|divisibleby:3 or forloop.last %}
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+      
+          <div class="d-flex justify-content-center align-items-center mt-3">
+            <button class="carousel-control-prev me-2" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+      
+            <span id="carousel-slide-indicator" class="mx-3">1/{{ total_slides }}</span>
+      
+            <button class="carousel-control-next ms-2" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+    </div>
+
+    {% comment %} FAQ {% endcomment %}
+<div class="container faq-section mb-5">
+    <div class="container faq-section">
+        <h2 class="text-center">{% trans "Frequently Asked Questions" %}</h2>
+
+        <!-- Tabs for categories -->
+        <ul class="nav nav-pills mb-3 justify-content-center" id="faqTabs" role="tablist">
+            {% for category in categories %}
+            <li class="nav-item">
+                <a class="nav-link {% if forloop.first %}active{% endif %}" id="tab-{{ forloop.counter }}" data-toggle="pill" href="#faq-tab-{{ forloop.counter }}" role="tab" aria-controls="faq-tab-{{ forloop.counter }}">
+                    {{ category.name }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <!-- Tab content for each category -->
+        <div class="tab-content" id="faqTabContent">
+            {% for category in categories %}
+            <div class="tab-pane fade {% if forloop.first %}show active{% endif %}" id="faq-tab-{{ forloop.counter }}" role="tabpanel" aria-labelledby="tab-{{ forloop.counter }}">
+                <div class="accordion" id="faqAccordion{{ forloop.counter }}">
+                    {% for faq in category.faq_set.all %}
+                    <div class="card">
+                        <div class="card-header" id="heading{{ forloop.counter }}">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link accordion-button" type="button" data-toggle="collapse" data-target="#collapse{{ forloop.counter }}" aria-expanded="true" aria-controls="collapse{{ forloop.counter }}">
+                                    {{ faq.question }}
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse{{ forloop.counter }}" class="collapse" aria-labelledby="heading{{ forloop.counter }}" data-parent="#faqAccordion{{ forloop.parentloop.counter }}">
+                            <div class="card-body">
+                                {{ faq.answer }}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+    {% comment %} Contact Form {% endcomment %}
+    <div class="row justify-content-left mt-5 mb-5" style="background-color:#fff !important;">
+        <div class="col-md-8">
+            <h2 class="text-left mb-4">Get in touch with us.<br>We're here to assist you.</h2>
+            <form method="POST">
+                {% csrf_token %}
+                
+                <!-- Full name, email, and complaint type in one row -->
+                <div class="form-row">
+                    <div class="form-group col-lg-4">
+                        {{ form.full_name.label_tag }}
+                        {{ form.full_name }}
+                    </div>
+                    <div class="form-group col-lg-4">
+                        {{ form.email.label_tag }}
+                        {{ form.email }}
+                    </div>
+                    <div class="form-group col-lg-4">
+                        {{ form.complaint_type.label_tag }}
+                        {{ form.complaint_type }}
+                    </div>
+                </div>
+                
+                <!-- Message in its own row -->
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        {{ form.message.label_tag }}
+                        {{ form.message }}
+                    </div>
+                </div>
+                
+                <!-- Submit button in its own row -->
+                <div class="form-row mt-4">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-dark btn-lg btn-block">Leave us a Message</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const testimonialCarousel = document.getElementById('testimonialCarousel');
+            const indicator = document.getElementById('carousel-slide-indicator');
+            const totalSlides = {{ total_slides }};  // The total number of slides passed from Django
+
+            testimonialCarousel.addEventListener('slid.bs.carousel', function (event) {
+                const currentSlide = event.to + 1;  // Get the index of the current slide (0-based, so +1)
+                indicator.textContent = `${currentSlide}/${totalSlides}`;
+            });
+        });
+    </script>
+{% endblock %}

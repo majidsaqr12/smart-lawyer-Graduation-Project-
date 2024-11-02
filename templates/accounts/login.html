@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/accounts/login.css' %}">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('{% static "images/background-login.jpg" %}');
+            background-size: cover;
+            background-position: center;
+        }
+        .sign-in-image {
+            flex: 1;
+            background-image: url('{% static "images/hero.jpg" %}');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+{% endblock %}
+
+{% block hero_section %}
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid sign-in-container">
+        <div class="sign-in-box">
+            <!-- Left image -->
+            <div class="sign-in-image d-none d-md-flex"></div>
+            <!-- Right form -->
+            <div class="sign-in-form">
+                <h2>Sign In</h2>
+                <p>Sign in to enjoy the features of Smart Lawyer</p>
+
+                {% if form.non_field_errors %}
+                    <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+                {% endif %}
+                
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input style="border-radius: 20px;" type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input style="border-radius: 20px;" type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <a href="{% url 'password_reset' %}" class="form-link">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="btn btn-custom w-100">LOGIN</button>
+                    <div class="text-center mt-3">
+                        <p>Don't have an account? <a href="{% url 'register' %}" class="form-link">Sign Up</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

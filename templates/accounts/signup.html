@@ -1,0 +1,199 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block hero_section %}
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/accounts/signup.css' %}">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('{% static "images/background-login.jpg" %}');
+            background-size: cover;
+            background-position: center;
+        }
+        .sign-in-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Full width background image */
+        .sign-in-image {
+            width: 100%;
+            height: 100vh;
+            background-image: url('{% static "images/background-login.jpg" %}');
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        /* Form container */
+        .sign-up-form {
+            width: 100%;
+            max-width: 600px; /* Increased width for better layout */
+            background-color: rgba(255, 255, 255, 0.9); /* White background with transparency */
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            z-index: 2; /* Ensure form is on top of the image */
+            position: relative;
+        }
+
+        /* Form heading */
+        h4 {
+            font-weight: 600;
+            color: #4a4a4a;
+            margin-bottom: 20px;
+        }
+
+        /* Progress bar styling */
+        .progress {
+            height: 8px;
+            background-color: #d3d3d3;
+            border-radius: 4px;
+            margin-bottom: 30px;
+        }
+        .progress-bar {
+            background-color: #7b7be3;
+            width: {% if step == '1' %}25{% elif step == '2' %}50{% elif step == '3' %}75{% else %}100{% endif %}%;
+            transition: width 0.3s ease;
+            border-radius: 4px;
+        }
+
+        /* Buttons styling */
+        .btn-primary {
+            background-color: #7b7be3;
+            border-color: #7b7be3;
+            border-radius: 50px;
+            padding: 10px 20px;
+        }
+        .btn-secondary {
+            border-radius: 50px;
+            padding: 10px 20px;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .sign-up-form {
+                max-width: 100%;
+                padding: 30px;
+                margin: 20px;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid sign-in-container">
+    <div class="sign-in-image"></div>
+
+    <div class="sign-up-form">
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+
+        <!-- Form content -->
+        <form method="POST" class="form">
+            {% csrf_token %}
+            {% if step == '1' %}
+                <h4>Step 1</h4>
+                <div class="form-group">
+                    {{ form.as_p }}
+                </div>
+            {% elif step == '2' %}
+                <h4>Step 2</h4>
+                <div class="form-group">
+                    {{ form.as_p }}
+                </div>
+            {% elif step == '3' %}
+                <h4>Step 3: Personal Information</h4>
+                <div class="row">
+                    <!-- Arranging fields in two columns using Bootstrap grid system -->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form.username.label_tag }}
+                            {{ form.username }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form.first_name.label_tag }}
+                            {{ form.first_name }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form.last_name.label_tag }}
+                            {{ form.last_name }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form.date_of_birth.label_tag }}
+                            {{ form.date_of_birth }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form.phone_number.label_tag }}
+                            {{ form.phone_number }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form.gender.label_tag }}
+                            {{ form.gender }}
+                        </div>
+                    </div>
+                </div>
+            {% elif step == '4' %}
+                <h4>Step 4: Account Information</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form.email.label_tag }}
+                            {{ form.email }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form.secret_code.label_tag }}
+                            {{ form.secret_code }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form.password1.label_tag }}
+                            {{ form.password1 }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form.password2.label_tag }}
+                            {{ form.password2 }}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            <div class="mt-4 d-flex justify-content-between">
+                {% if step != '1' %}
+                    <button type="submit" name="previous" class="btn btn-secondary">Previous</button>
+                {% endif %}
+                {% if step != '4' %}
+                    <button type="submit" name="next" class="btn btn-primary">Next</button>
+                {% else %}
+                    <button type="submit" name="register" class="btn btn-primary">Register</button>
+                {% endif %}
+            </div>
+        </form>
+        <a href="{% url 'login' %}" class="btn btn-secondary mt-3 w-100">Return to the login page</a>
+    </div>
+</div>
+{% endblock %}

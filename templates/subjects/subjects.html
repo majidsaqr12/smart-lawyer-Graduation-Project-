@@ -1,0 +1,215 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block hero_section %}
+{% endblock %}
+
+{% block css %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+    #container {
+        max-width: 1200px;
+    }
+    #custom-card {
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s;
+        cursor: pointer;
+    }
+    #custom-card:hover {
+        transform: scale(1.05);
+    }
+    #custom-card-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+    }
+    #subject-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .subject-item {
+        margin: 15px;
+        flex: 0 1 200px;
+    }
+    #success-message {
+        display: none;
+        color: green;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+    #file-paths {
+        margin-top: 20px;
+        text-align: left;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div id="container" class="text-center mt-5 mb-5">
+    <h3>
+        <img src="{% static 'images/icons/robot.png' %}" alt="Icon" style="width: 50px; height: 50px; vertical-align: middle; margin-right: 10px;">
+        I'm here to guide you! Select a subject, and we'll get started right away.
+    </h3>
+    <div id="subject-container">
+        <!-- Mathematics Card -->
+        <div class="subject-item">
+            <div class="card" id="custom-card" onclick="sendRequest()">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <img src="{% static 'images/icons/mathematics.png' %}" alt="Icon1" style="width: 30px; height: 30px;">
+                        <img src="{% static 'images/icons/arrow.png' %}" alt="Icon2" style="width: 30px; height: 30px;">
+                    </div>
+                    <h5 id="custom-card-title" class="mt-3 text-start">Mathematics</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- English Card -->
+        <div class="subject-item">
+            <div class="card" id="custom-card" onclick="sendRequest()">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <img src="{% static 'images/icons/english.png' %}" alt="Icon1" style="width: 30px; height: 30px;">
+                        <img src="{% static 'images/icons/arrow.png' %}" alt="Icon2" style="width: 30px; height: 30px;">
+                    </div>
+                    <h5 id="custom-card-title" class="mt-3 text-start">English</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chemistry Card -->
+        <div class="subject-item">
+            <div class="card" id="custom-card" onclick="sendRequest()">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <img src="{% static 'images/icons/chemistry.png' %}" alt="Icon1" style="width: 30px; height: 30px;">
+                        <img src="{% static 'images/icons/arrow.png' %}" alt="Icon2" style="width: 30px; height: 30px;">
+                    </div>
+                    <h5 id="custom-card-title" class="mt-3 text-start">Chemistry</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- Geography Card -->
+        <div class="subject-item">
+            <div class="card" id="custom-card" onclick="sendRequest()">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <img src="{% static 'images/icons/geography.png' %}" alt="Icon1" style="width: 30px; height: 30px;">
+                        <img src="{% static 'images/icons/arrow.png' %}" alt="Icon2" style="width: 30px; height: 30px;">
+                    </div>
+                    <h5 id="custom-card-title" class="mt-3 text-start">Geography</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- Science Card -->
+        <div class="subject-item">
+            <div class="card" id="custom-card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <img src="{% static 'images/icons/chemistry.png' %}" alt="Icon1" style="width: 30px; height: 30px;">
+                        <img src="{% static 'images/icons/arrow.png' %}" alt="Icon2" style="width: 30px; height: 30px;">
+                    </div>
+                    <h5 id="custom-card-title" class="mt-3 text-start">Science</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- History Card -->
+        <div class="subject-item">
+            <div class="card" id="custom-card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <img src="{% static 'images/icons/history.png' %}" alt="Icon1" style="width: 30px; height: 30px;">
+                        <img src="{% static 'images/icons/arrow.png' %}" alt="Icon2" style="width: 30px; height: 30px;">
+                    </div>
+                    <h5 id="custom-card-title" class="mt-3 text-start">History</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- Biology Card -->
+        <div class="subject-item">
+            <div class="card" id="custom-card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <img src="{% static 'images/icons/biology.png' %}" alt="Icon1" style="width: 30px; height: 30px;">
+                        <img src="{% static 'images/icons/arrow.png' %}" alt="Icon2" style="width: 30px; height: 30px;">
+                    </div>
+                    <h5 id="custom-card-title" class="mt-3 text-start">Biology</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- Physics Card -->
+        <div class="subject-item">
+            <div class="card" id="custom-card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <img src="{% static 'images/icons/physics.png' %}" alt="Icon1" style="width: 30px; height: 30px;">
+                        <img src="{% static 'images/icons/arrow.png' %}" alt="Icon2" style="width: 30px; height: 30px;">
+                    </div>
+                    <h5 id="custom-card-title" class="mt-3 text-start">Physics</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- Arabic Card -->
+        <div class="subject-item">
+            <div class="card" id="custom-card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <img src="{% static 'images/icons/arabic.png' %}" alt="Icon1" style="width: 30px; height: 30px;">
+                        <img src="{% static 'images/icons/arrow.png' %}" alt="Icon2" style="width: 30px; height: 30px;">
+                    </div>
+                    <h5 id="custom-card-title" class="mt-3 text-start">Arabic</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- French Card -->
+        <div class="subject-item">
+            <div class="card" id="custom-card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <img src="{% static 'images/icons/french.png' %}" alt="Icon1" style="width: 30px; height: 30px;">
+                        <img src="{% static 'images/icons/arrow.png' %}" alt="Icon2" style="width: 30px; height: 30px;">
+                    </div>
+                    <h5 id="custom-card-title" class="mt-3 text-start">French</h5>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Success Message -->
+    <div id="success-message">Files sent successfully!</div>
+
+</div>
+
+<script>
+    function sendRequest() {
+        fetch('https://162.19.111.174/load_path?folder_path=app/lessons', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message === "PDF files processed successfully") {
+                document.getElementById("success-message").style.display = "block";
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+</script>
+
+{% endblock %}

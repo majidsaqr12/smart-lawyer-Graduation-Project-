@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Verify Email{% endblock %}
+
+{% block hero_section %}
+<div class="hero-section text-center py-5" style="background-color: #f8f9fa;">
+    <h1>Verify Your Email</h1>
+    <p class="lead">A verification code has been sent to your email. Please enter the code below.</p>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm rounded-3 border-0 mt-5">
+                <div class="card-body p-4">
+                    <h5 class="card-title text-center mb-4">Email Verification</h5>
+                    <p class="text-center text-muted mb-4">Enter the verification code sent to your email.</p>
+                    <form method="POST" id="verify-form">
+                        {% csrf_token %}
+                        <div class="form-group mb-3">
+                            <label for="code" class="form-label">Verification Code</label>
+                            <input type="text" class="form-control form-control-lg rounded-pill" id="code" name="code" placeholder="Enter code" required>
+                        </div>
+                        <div class="d-grid mb-3">
+                            <button type="submit" class="btn btn-primary btn-lg rounded-pill" name="verify">Verify</button>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-link" name="resend_code">Resend Code</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Adjust form behavior when the "Resend Code" button is clicked
+    document.querySelector('button[name="resend_code"]').addEventListener('click', function(e) {
+        document.getElementById('code').removeAttribute('required');  // Remove required attribute
+    });
+</script>
+{% endblock %}

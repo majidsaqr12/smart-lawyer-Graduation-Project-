@@ -1,0 +1,82 @@
+{% comment %} {% extends "base.html" %}
+
+{% block title %}Page Not Found - HB Development{% endblock %}
+{% load static %}
+{% block seo %}
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="The page you're looking for cannot be found. Return to the HB Development homepage to continue exploring our services.">
+<meta name="keywords" content="404, page not found, HB Development, error 404, technology services, missing page">
+<meta property="og:title" content="Page Not Found - HB Development">
+<meta property="og:description" content="The page you're looking for cannot be found. Return to the HB Development homepage to continue exploring our services.">
+<meta property="og:image" content="{% static 'images/logo1.png' %}">
+<meta property="og:type" content="website">
+{% endblock %}
+
+{% block hero_section %}
+{% endblock %}
+
+{% block content %}
+<style>
+    .error-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+    }
+    .error-message {
+        max-width: 600px;
+        padding: 40px;
+        border: 2px solid #f8d7da;
+        border-radius: 10px;
+        background-color: #f8d7da;
+    }
+    .error-icon {
+        background: linear-gradient(90deg, #E74C3C, #C0392B);
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        border-radius: 20px;
+        transition: background 0.3s ease;
+        margin-top: 20px;
+    }
+    .error-text {
+        margin-top: 20px;
+        font-size: 24px;
+    }
+    .btn-gradient {
+        background: linear-gradient(90deg, #E74C3C, #C0392B);
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        border-radius: 20px;
+        transition: background 0.3s ease;
+        margin-top: 20px;
+    }
+    .btn-gradient:hover {
+        background: linear-gradient(90deg, #C0392B, #E74C3C);
+        color: white;
+    }
+</style>
+
+<div class="container error-container">
+    <div class="error-message">
+        <div class="error-icon">
+            <svg width="80" height="80" viewBox="0 0 16 16" class="bi bi-exclamation-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM7.002 11a1 1 0 1 0 2 0 1 1 0 0 0-2 0zm.93-6a.5.5 0 0 1 .54.45v3.1a.5.5 0 0 1-1 .1v-3.2a.5.5 0 0 1 .46-.45z"/>
+            </svg>
+        </div>
+        <h2 class="error-text">Sorry!</h2>
+        <p class="error-text">The page you're looking for cannot be found.</p>
+        <a href="{% url 'accueil' %}" class="btn btn-gradient">Return to the Homepage</a>
+    </div>
+</div>
+{% endblock %} {% endcomment %}

@@ -1,0 +1,120 @@
+body {
+    background-color: #f5f8ff;
+}
+
+.container {
+    max-width: 700px;
+}
+
+.card {
+    background-color: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Nav Pills for Steps */
+.nav-pills .nav-link {
+    border-radius: 0;
+    background-color: #d3d3d3;
+    padding: 10px;
+    font-size: 14px;
+    color: #4a4a4a;
+    transition: background-color 0.3s ease;
+}
+
+.nav-pills .nav-link.active {
+    background-color: #7b7be3;
+    color: #fff;
+}
+
+.nav-pills {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Progress Bar Styling */
+.progress {
+    height: 8px;
+    background-color: #d3d3d3;
+    border-radius: 5px;
+}
+
+.progress-bar {
+    background-color: #7b7be3;
+    transition: width 0.4s ease;
+}
+
+/* Centered Step Titles */
+h4.text-center {
+    color: #4a4a4a;
+    font-weight: 600;
+}
+
+/* Button Styling */
+button {
+    width: 120px;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+button:disabled {
+    background-color: #d3d3d3;
+    border-color: #d3d3d3;
+}
+
+.btn-primary {
+    background-color: #7b7be3;
+    border-color: #7b7be3;
+}
+
+.btn-secondary {
+    background-color: #333;
+    border-color: #333;
+}
+
+/* Full-width Return to Login Button */
+a.btn-secondary {
+    background-color: #333;
+    border-color: #333;
+    color: white;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+/* Form input fields */
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: none;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #7b7be3;
+    box-shadow: 0 0 5px rgba(123, 123, 227, 0.5);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 576px) {
+    .nav-pills .nav-link {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    button {
+        width: 100px;
+        padding: 8px;
+    }
+}
