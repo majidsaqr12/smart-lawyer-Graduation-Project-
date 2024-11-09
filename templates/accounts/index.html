@@ -72,7 +72,7 @@
               ></span>
               <a
                 class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
-                href="{% url 'profile' %}"
+                href="{% url 'profile_edit' %}"
               >
                 <svg
                   class="w-5 h-5"
@@ -754,12 +754,11 @@
                   aria-label="Account"
                   aria-haspopup="true"
                 >
-                <img
-                class="object-cover w-8 h-8 rounded-full"
-                src="{% if profile.image %}{{ profile.image.url }}{% else %}<span class="ms-2">{{ user.username }}</span>{% endif %}"
-                alt="Profile Image"
-                aria-hidden="true"
-                />            
+                {% if user.profile.image %}
+                  <img class="object-cover w-8 h-8 rounded-full" src="{{ user.profile.image.url }}" aria-hidden="true" />
+                {% else %}
+                    <span class="ms-2 font-weight-bold mt-5">{{ user.username }}</span>
+                {% endif %}            
                 </button>
                 <template x-if="isProfileMenuOpen">
                   <ul

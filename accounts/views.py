@@ -12,7 +12,8 @@ import string
 from datetime import datetime
 from django.contrib.auth.models import User
 from django.utils.crypto import get_random_string
-from django.urls import reverse
+from django.utils import timezone
+
 
 
 def user_login(request):
@@ -42,6 +43,12 @@ def register(request):
         user_form = UserRegisterForm(request.POST)
         if user_form.is_valid():
             user = user_form.save()
+            # Create a profile for the user
+            Profile.objects.create(
+                user=user,
+                full_name=f"{user.first_name} {user.last_name}",
+                date_of_joining=timezone.now()
+            )
             messages.success(request, 'Your account has been created! You can now log in.')
             login(request, user)
             return redirect('home')
@@ -182,3 +189,32 @@ def password_reset_form(request, user_id):
 def profile_view(request):
     profile = Profile.objects.get(user=request.user)
     return render(request, 'accounts/index.html', {'user': request.user, 'profile': profile})
+
+@login_required
+def profile_edit(request):
+    if request.method == "POST":
+        profile = request.user.profile
+        profile.first_name = request.POST.get('first_name')
+        profile.last_name = request.POST.get('last_name')
+        profile.phone_number = request.POST.get('phone_number')
+        profile.gender = request.POST.get('gender')
+
+        # Check if a valid date is provided
+        date_of_birth = request.POST.get('date_of_birth')
+        if date_of_birth:
+            try:
+                # Try to parse the date to confirm it's in the correct format
+                profile.date_of_birth = datetime.strptime(date_of_birth, "%Y-%m-%d").date()
+            except ValueError:
+                messages.error(request, "Invalid date format. Please use YYYY-MM-DD.")
+                return redirect('profile_edit')
+
+        # Handle image upload
+        if 'image' in request.FILES:
+            profile.image = request.FILES['image']
+
+        profile.save()
+        messages.success(request, "Profile updated successfully")
+        return redirect('profile_edit')
+
+    return render(request, 'accounts/tables.html')
