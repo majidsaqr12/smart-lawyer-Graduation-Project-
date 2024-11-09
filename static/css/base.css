@@ -60,7 +60,7 @@ body {
 
 /* Hero Section */
 .hero-img {
-    max-width: 100%;
+    max-width: 80%;
     height: auto;
     border-radius: 10px; /* Adds rounded corners */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
@@ -102,4 +102,5 @@ footer p {
 .social-icons a:hover {
     color: #233876;
 }
+
 

@@ -51,3 +51,21 @@ def custom_404(request):
 
 def success_view(request):
     return render(request, 'pages/success.html')
+
+def about(request):
+    return render(request, 'pages/about.html')
+
+def service(request):
+    return render(request, 'pages/service.html')
+
+def feature(request):
+    return render(request, 'pages/feature.html')
+
+def team(request):
+    return render(request, 'pages/team.html')
+
+def faq(request):
+    return render(request, 'pages/faq.html')
+
+def contact(request):
+    return render(request, 'pages/contact.html')

@@ -1,0 +1,532 @@
+/*
+---------------------------------------------
+PopUp
+---------------------------------------------
+*/
+
+#lean_overlay {
+  position: fixed;
+  z-index: 100;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  background: #000;
+  display: none;
+}
+
+.popupContainer {
+  position: absolute;
+  width: 330px;
+  height: auto;
+  left: 45%;
+  top: 60px;
+  background: #FFF;
+}
+
+/* Existing Button Styles with ID Overrides */
+#login_form,
+#register_form,
+#login_red,
+#register_red {
+  padding: 10px 20px;
+  background: #4b8ef1;
+  color: #fff;
+  transition: all 0.3s;
+}
+
+#login_red {
+  background: #4b8ef1;
+  color: #FFF;
+}
+
+/* Hover effects */
+#login_form:hover,
+#register_form:hover,
+#login_red:hover,
+#register_red:hover {
+  background: #E4E4E2;
+}
+
+#register_red:hover {
+  color: #2a2a2a;
+}
+
+a#login_form,
+a#register_form,
+a#login_red,
+a#register_red {
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+}
+
+.one_half {
+  width: 50%;
+  display: block;
+  float: left;
+}
+
+.one_half.last {
+  width: 45%;
+  margin-left: 5%;
+}
+/* Popup Styles*/
+
+.popupHeader {
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.popupHeader {
+  background: #F4F4F2;
+  position: relative;
+  padding: 10px 20px;
+  border-bottom: 1px solid #DDD;
+  font-weight: bold;
+}
+
+.popupHeader .modal_close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 10px 15px;
+  background: #4b8ef1;
+  cursor: pointer;
+  color: #fff;
+  font-size: 16px;
+}
+
+.popupBody {
+  padding: 20px;
+}
+
+.social_login .social_box {
+  display: block;
+  clear: both;
+  padding: 10px;
+  margin-bottom: 10px;
+  background: #F4F4F2;
+  overflow: hidden;
+}
+
+.social_login .icon {
+  display: inline-block;
+  
+  padding: 5px 10px;
+  margin-right: 10px;
+  float: left;
+  color: #FFF;
+  font-size: 16px;
+  text-align: center;
+}
+
+.social_login .fb .icon {
+  background: #3B5998;
+}
+
+.social_login .google .icon {
+  background: #DD4B39;
+}
+
+.social_login .icon_title {
+  display: block;
+  padding: 5px 0;
+  float: left;
+  font-weight: bold;
+  font-size: 16px;
+  color: #777;
+}
+
+.social_login .social_box:hover {
+  background: #E4E4E2;
+}
+
+.centeredText {
+  color: #afafaf;
+  text-align: center;
+  margin: 20px 0;
+  clear: both;
+  overflow: hidden;
+  text-transform: capitalize;
+}
+
+.user_login label {
+  color: #afafaf;
+}
+
+.action_btns {
+  clear: both;
+  overflow: hidden;
+}
+
+.action_btns a {
+  display: block;
+}
+/* User Login Form */
+
+.user_login {
+  display: none;
+}
+
+.user_login label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.user_login input[type="text"],
+.user_login input[type="email"],
+.user_login input[type="password"] {
+  display: block;
+  width: 90%;
+  padding: 10px;
+  border: 1px solid #DDD;
+  color: #666;
+}
+
+.user_login input[type="checkbox"] {
+  float: left;
+  margin-right: 10px;
+  width: 22px;
+  height: 22px;
+}
+
+.user_login input[type="checkbox"]+label {
+  float: left;
+}
+
+.user_login .checkbox {
+  margin-bottom: 10px;
+  clear: both;
+  overflow: hidden;
+}
+
+.forgot_password {
+  display: block;
+  margin: 20px 0 10px;
+  clear: both;
+  overflow: hidden;
+  text-decoration: none;
+  color: #4b8ef1;
+  transition: all .3s;
+}
+/* User Register Form */
+
+.user_register {
+  display: none;
+}
+
+.user_register label {
+  color: #afafaf;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.user_register input[type="text"],
+.user_register input[type="email"],
+.user_register input[type="password"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #DDD;
+  color: #666;
+}
+
+.user_register input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  float: left;
+  margin-right: 8px;
+}
+
+.user_register input[type="checkbox"]+label {
+  float: left;
+  color: #afafaf;
+}
+
+.user_register .checkbox {
+  margin-bottom: 10px;
+  clear: both;
+  overflow: hidden;
+}
+
+
+
+/* 
+---------------------------------------------
+responsive
+--------------------------------------------- 
+*/
+
+
+
+@media (max-width: 1200px) {
+  .header-area .main-nav .logo h4 {
+    font-size: 24px;
+  }
+  .header-area .main-nav .logo h4 img {
+    max-width: 25px;
+    margin-left: 0px;
+  }
+  .header-area .main-nav .nav li:last-child {
+    padding-left: 20px;
+  }
+  
+  .main-banner .left-content h2 {
+    z-index: 2;
+    position: relative;
+    font-weight: 700;
+    line-height: 70px;
+    font-size: 50px;
+    margin-bottom: 20px;
+  }
+
+  .main-banner .left-content p {
+    margin-bottom: 45px;
+  }
+}
+
+@media (max-width: 992px) {
+  .header-area {
+    background-color: #fff;
+  }
+  .main-banner:after {
+    display: none;
+  } 
+  .main-banner .left-content h2 {
+    color: #2a2a2a;
+    margin-right: 0;
+  }
+  .main-banner .left-content p {
+    color: #afafaf;
+    margin-right: 0;
+  }
+  .main-banner .left-content .white-button a {
+    background-color: #4b8ef1;
+    color: #fff !important;
+  }
+  form#contact {
+    overflow: hidden;
+  }
+  .header-area .main-nav .logo h4 {
+    font-size: 20px;
+  }
+  .main-banner .left-content {
+    margin-right: 0px;
+  }
+  .main-banner {
+    text-align: center;
+    padding: 226px 0px 30px 0px;
+  }
+  .main-banner:before {
+    display: none;
+  }
+  .main-banner .right-image {
+    margin: 30px auto 0px auto;
+    text-align: center;
+  }
+  .features-item {
+    margin-bottom: 45px;
+  }
+  .last-features-item,
+  .last-skill-item {
+    margin-bottom: 0px !important;
+  }
+  .skill-item {
+    margin-bottom: 30px;
+  }
+  .about-left-image img {
+    margin-right: 0px;
+    margin-bottom: 45px;;
+  }
+  .services .naccs .menu div {
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .service-item {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .about-us .box-item {
+    text-align: center;
+  }
+  .about-us:after {
+    display: none;
+  }
+  .about-us .gradient-button,
+  .about-us span {
+    text-align: center;
+    display: block;
+  }
+  .about-us .right-image {
+    margin-top: 30px;
+  }
+  .service-item .icon {
+    margin: 0 auto 30px auto;
+  }
+  .about-us .section-heading {
+    text-align: center;
+  }
+  .about-us .left-image {
+    margin-right: 30px;
+    margin-left: 30px;
+    margin-bottom: 45px;
+  }
+  .blog-posts {
+    margin-left: 0px;
+    margin-top: 30px;
+  }
+  .post-item {
+    margin-bottom: 70px;
+  }
+  .pricing-item-regular {
+    margin-bottom: 30px;
+  }
+  .our-portfolio .owl-nav {
+    display: none !important;
+  }
+  .contact-info {
+    margin-top: 60px;
+  }
+  form#contact {
+    padding: 45px;
+  }
+}
+
+@media (max-width: 767px) {
+  .the-clients .naccs .menu div {
+    text-align: center;
+  }
+  footer .section-heading h4 {
+    color: #2a2a2a;
+  }
+  footer #search {
+    margin-bottom: 45px;
+  }
+  footer {
+    padding-top: 0px;
+    text-align: center;
+  }
+  .footer-widget ul {
+    display: block;
+    width: 100%;
+    float: none;
+    text-align: center;
+    margin: 0 auto;
+  }
+  .footer-widget h4 {
+    margin-top: 45px;
+    margin-bottom: 20px;
+  }
+  footer #search input {
+    border: 1px solid #eee;
+    color: #afafaf;
+    background-color: #fff;
+    border-radius: 23px;
+    margin-bottom: 15px;
+    padding: 0px 30px;
+  }
+  footer #search button {
+    background-color: #fff;
+    color: #4b8ef1;
+  }
+  footer #search input::placeholder { 
+    color: #2a2a2a;
+  }
+  .header-area .main-nav .logo h4 {
+    font-size: 30px;
+  }
+  .header-area .main-nav .logo h4 img {
+    max-width: 30px;
+    margin-left: 5px;
+  }
+  .main-banner .info-stat {
+    margin-bottom: 15px;
+  }
+  .menu .thumb span.date {
+    margin-bottom: -20px;
+    display: block;
+  }
+  .service-item {
+    text-align: center;
+    padding: 30px;
+  }
+  .menu .thumb span.category {
+    display: none;
+  }
+  .about-us .right-image {
+    margin-top: 30px;
+  }
+  .service-item .icon {
+    float: none;
+    margin-right: 0px;
+    margin-bottom: 15px;
+  }
+  .service-item .right-content {
+    display: inline-block;
+  }
+  .services .naccs .menu div .thumb {
+    padding: 5px;
+  }
+  .services .icon img {
+    margin: 0px;
+  }
+  .the-clients .nacc .thumb .down-content .right-content {
+    margin-left: 0px;
+    margin-top: 15px;
+  }
+  .services ul.nacc li.active {
+    padding: 45px;
+  }
+  .services .naccs .menu div  {
+    font-size: 0px;
+  }
+  .the-clients .nacc .thumb .down-content {
+    text-align: center;
+  }
+  .services ul.nacc li .right-image img {
+    float: none;
+  }
+  .our-portfolio .section-heading,
+  .about-us .section-heading,
+  .about-us .about-item,
+  .about-us p,
+  .about-us .main-green-button {
+    text-align: center;
+  }
+  .our-portfolio .section-heading .line-dec {
+    margin: 0 auto;
+  }
+  .our-services .section-heading {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+  .free-quote form input {
+    margin-left: 0px;
+    padding: 0px 30px;
+  }
+  .free-quote form button {
+    margin-left: 0px;
+    border-bottom-left-radius: 40px;
+    border-top-right-radius: 0px;
+  }
+  .blog-posts {
+    margin-left: 0px;
+    margin-top: 30px;
+  }
+  .post-item {
+    margin-bottom: 30px;
+  }
+  .post-item .thumb img {
+    max-width: 140px;
+  }
+  .post-item .right-content p {
+    display: none;
+  }
+  .about-us .about-item {
+    margin-top: 15px;
+  }
+  form#contact {
+    padding: 30px;
+  }
+}

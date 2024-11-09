@@ -3,11 +3,7 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 
 class Profile(models.Model):
-    USER_TYPE_CHOICES = (
-        ('lawyer', 'Lawyer'),
-        ('person', 'person'),
-    )
-    
+
     GENDER_CHOICES = (
         ('male', 'Male'),
         ('female', 'Female'),
@@ -15,7 +11,6 @@ class Profile(models.Model):
     )
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    user_type = models.CharField(max_length=20, choices=USER_TYPE_CHOICES, default='lawyer')
     
     # Personal Information
     first_name = models.CharField(max_length=30)
@@ -26,7 +21,7 @@ class Profile(models.Model):
     phone_number = models.CharField(max_length=14, default="+20")
     
     # Account Information
-    secret_code = models.CharField(max_length=50)  # Add Secret Code field
+    secret_code = models.CharField(max_length=50) 
 
     # Extra Info
     verification_code = models.CharField(max_length=6, blank=True)

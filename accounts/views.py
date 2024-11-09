@@ -3,9 +3,9 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
-from django.core.mail import send_mail, BadHeaderError
+from django.core.mail import send_mail
 from django.contrib import messages
-from .forms import  PersonalInfoForm, SchoolInfoForm, AccountInfoForm, PasswordResetVerificationForm, PasswordResetForm, UserTypeForm, PasswordResetRequestForm
+from .forms import  UserRegisterForm, PasswordResetVerificationForm, PasswordResetForm, PasswordResetRequestForm
 from .models import Profile
 import random
 import string
@@ -13,7 +13,6 @@ from datetime import datetime
 from django.contrib.auth.models import User
 from django.utils.crypto import get_random_string
 from django.urls import reverse
-
 
 
 def user_login(request):
@@ -25,108 +24,31 @@ def user_login(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('home')
+                return redirect('home')  # Redirect to home page after successful login
             else:
                 messages.error(request, 'Invalid username or password.')
         else:
             messages.error(request, 'Please correct the error below.')
     else:
         form = AuthenticationForm()
-    return render(request, 'accounts/login.html', {'form': form})
+    return render(request, 'base.html', {'form': form})
 
 
 def generate_code():
     return ''.join(random.choices(string.ascii_uppercase + string.digits, k=6))
 
-
-def multi_step_register(request):
-    step = request.GET.get('step', '1')  # Default to step 1
-    
-    # Handle POST request
+def register(request):
     if request.method == 'POST':
-        if 'previous' in request.POST:  # Handle Previous button click
-            if step == '2':
-                return redirect(f"{reverse('register')}?step=1")
-            elif step == '3':
-                return redirect(f"{reverse('register')}?step=2")
-            elif step == '4':
-                return redirect(f"{reverse('register')}?step=3")
-        
-        # Handle Next button click
-        if step == '1':
-            form = UserTypeForm(request.POST)
-            if form.is_valid():
-                request.session['user_type_info'] = form.cleaned_data  # Save data in session
-                return redirect(f"{reverse('register')}?step=2")
-        elif step == '2':
-            form = SchoolInfoForm(request.POST)
-            if form.is_valid():
-                request.session['school_info'] = form.cleaned_data  # Save data in session
-                return redirect(f"{reverse('register')}?step=3")
-        elif step == '3':
-            form = PersonalInfoForm(request.POST)
-            if form.is_valid():
-                personal_info = form.cleaned_data
-                # Convert date to string before saving in session
-                personal_info['date_of_birth'] = personal_info['date_of_birth'].strftime('%Y-%m-%d')
-                request.session['personal_info'] = personal_info  # Save the form data with string date, including username
-                return redirect(f"{reverse('register')}?step=4")
-        elif step == '4':
-            form = AccountInfoForm(request.POST)
-            if form.is_valid():
-                user_type_info = request.session.get('user_type_info')
-                school_info = request.session.get('school_info')
-                personal_info = request.session.get('personal_info')
-
-                # Convert date_of_birth back to date object
-                personal_info['date_of_birth'] = datetime.strptime(personal_info['date_of_birth'], '%Y-%m-%d').date()
-
-                # Create the user and profile
-                user = form.save(commit=False)
-
-                # Set the username from session data saved in step 3
-                user.username = personal_info['username']  # Get the username from session
-
-                user.is_active = False  # Set to inactive until email verification
-                user.save()
-
-                # Create profile with the additional details
-                profile = Profile.objects.create(
-                    user=user,
-                    user_type=user_type_info['user_type'],
-                    country=school_info['country'],
-                    education_system=school_info['education_system'],
-                    grade=school_info['grade'],
-                    first_name=personal_info['first_name'],
-                    last_name=personal_info['last_name'],
-                    full_name=f"{personal_info['first_name']} {personal_info['last_name']}",
-                    gender=personal_info['gender'],
-                    date_of_birth=personal_info['date_of_birth'],
-                    phone_number=personal_info['phone_number'],
-                    secret_code=form.cleaned_data['secret_code'],
-                )
-                profile.verification_code = generate_code()  # Generate a 6-character code
-                profile.save()
-
-                # Send the verification email
-                send_verification_email(user, profile.verification_code)
-
-                # Notify the user to verify their email
-                messages.success(request, 'Registration successful. Please verify your email.')
-                return redirect('verify_email', user_id=user.id)
-
-    # Handle GET request (when navigating back to a step)
+        user_form = UserRegisterForm(request.POST)
+        if user_form.is_valid():
+            user = user_form.save()
+            messages.success(request, 'Your account has been created! You can now log in.')
+            login(request, user)
+            return redirect('home')
     else:
-        if step == '1':
-            form = UserTypeForm(initial=request.session.get('user_type_info'))  # Load previous data
-        elif step == '2':
-            form = SchoolInfoForm(initial=request.session.get('school_info'))  # Load previous data
-        elif step == '3':
-            form = PersonalInfoForm(initial=request.session.get('personal_info'))  # Load previous data
-        else:
-            form = AccountInfoForm()
+        user_form = UserRegisterForm()
 
-    return render(request, 'accounts/signup.html', {'form': form, 'step': step})
+    return render(request, 'base.html', {'user_form': user_form})
 
 
 def send_verification_email(user, verification_code):
@@ -258,4 +180,5 @@ def password_reset_form(request, user_id):
 
 @login_required
 def profile_view(request):
-    return render(request, 'accounts/profile.html', {'user': request.user})
+    profile = Profile.objects.get(user=request.user)
+    return render(request, 'accounts/index.html', {'user': request.user, 'profile': profile})
