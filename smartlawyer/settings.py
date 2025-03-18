@@ -7,9 +7,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-3n0+3-%#vwm)rjc@s-qicbgb^wij1$bxtdm8&v^5j%f!b6&52b'
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'smartlawyer.pythonanywhere.com']
 
 
 INSTALLED_APPS = [
@@ -125,15 +125,15 @@ LOCALE_PATHS = [
 STATIC_URL = 'static/'
 MEDIA_URL = '/media/'
 
-# if DEBUG:
-#     STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-# else:
-#     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+if DEBUG:
+    STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'smartlawyer/static')]
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'smartlawyer/static')]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
